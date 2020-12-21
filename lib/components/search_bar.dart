@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/const.dart';
+import 'package:movie_ticket_app/welcome_page.dart';
 
 class SearchBar extends StatelessWidget {
  final  String hint ;
@@ -16,7 +17,7 @@ class SearchBar extends StatelessWidget {
       decoration: kRoundedFadedBorder,
       child: Row(
         children: <Widget>[
-          Expanded(
+    Expanded(
               child: TextField(
             style: TextStyle(fontSize: 22, color: Colors.white),
             maxLines: 1,

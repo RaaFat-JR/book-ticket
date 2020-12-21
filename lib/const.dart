@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 const kPimaryColor = Color(0xffF7BB0E);
 
 const kActionColor = Color(0xffF00000);

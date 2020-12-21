@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/components/calendar_day.dart';
 import 'package:movie_ticket_app/components/cienma_seat.dart';
 import 'package:movie_ticket_app/components/show_time.dart';
-
+import 'package:movie_ticket_app/film_lists.dart';
 import '../const.dart';
 
 class BuyTicket extends StatelessWidget {
@@ -18,21 +18,24 @@ class BuyTicket extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top:15.0 , left:15.0),
+              padding: const EdgeInsets.only(top:15.0 , left:0.0),
               child: Row(
                 children: <Widget>[
                   Container(
-                    width: MediaQuery.of(context).size.width * .12,
-                    height: MediaQuery.of(context).size.width * .12,
+                    width: MediaQuery.of(context).size.width * .15,
+                    height: 60.0,
                     decoration: kRoundedFadedBorder,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.keyboard_arrow_left,
-                          size: 28.0,
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        }),
+                    child:
+                    IconButton(icon: Icon(Icons.keyboard_arrow_left), onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                      MyHomePage()),
+
+                      );
+                    }),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .75,
@@ -139,7 +142,7 @@ class BuyTicket extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text('Star Cineplex Bangladesh', style: kMainTextStyle),
-                      Text('panthapath , 1205 Dhaka, Bangladesh',
+                      Text('panthapath , 1205 Dhaka',
                           style:
                               TextStyle(color: Colors.white30, fontSize: 18.0)),
                       SizedBox(height: 10.0),
