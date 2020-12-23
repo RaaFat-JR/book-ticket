@@ -7,8 +7,9 @@ import '../const.dart';
 
 class BuyTicket extends StatelessWidget {
   var title;
-
-  BuyTicket(this.title);
+  int movieId ;
+  List <int> seats;
+  BuyTicket(this.title,this.movieId,this.seats);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -180,14 +181,14 @@ class BuyTicket extends StatelessWidget {
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id : 0,movieId: movieId,isReserved: seats[0]==0 ? false : true),
+                      CienmaSeat(id :1,movieId: movieId,isReserved: seats[1]==0 ? false : true),
+                      CienmaSeat(id :2,movieId: movieId,isReserved: seats[2]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :3,movieId: movieId,isReserved: seats[3]==0 ? false : true),
+                      CienmaSeat(id :4,movieId: movieId,isReserved: seats[4]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),
@@ -197,88 +198,82 @@ class BuyTicket extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :5,movieId: movieId,isReserved: seats[5]==0 ? false : true),
+                      CienmaSeat(id :6,movieId: movieId,isReserved: seats[6]==0 ? false : true),
+                      CienmaSeat(id :7,movieId: movieId,isReserved: seats[7]==0 ? false : true),
+                      CienmaSeat(id :8,movieId: movieId,isReserved: seats[8]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
                       CienmaSeat(
-                        isReserved: true,
+                          id :9,movieId: movieId,isReserved: seats[9]==0 ? false : true
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :10,movieId: movieId,isReserved: seats[10]==0 ? false : true),
+                      CienmaSeat(id :11,movieId: movieId,isReserved: seats[11]==0 ? false : true),
                     ],
                   ),
                   // Third  Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :12,movieId: movieId,isReserved: seats[12]==0 ? false : true),
+                      CienmaSeat(id :13,movieId: movieId,isReserved: seats[13]==0 ? false : true),
+                      CienmaSeat(id :14,movieId: movieId,isReserved: seats[14]==0 ? false : true),
+                      CienmaSeat(id :15,movieId: movieId,isReserved: seats[15]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(
-                        isReserved: true,
-                      ),
-                      CienmaSeat(
-                        isReserved: true,
-                      ),
+                      CienmaSeat(id :16,movieId: movieId,isReserved: seats[16]==0 ? false : true),
+                      CienmaSeat(id :17,movieId: movieId,isReserved: seats[17] ==0 ? false : true),
+                      CienmaSeat(id :18,movieId: movieId,isReserved: seats[18]==0 ? false : true),
                     ],
                   ),
                   // 4TH Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :19,movieId: movieId,isReserved: seats[19]==0 ? false : true),
+                      CienmaSeat(id :20,movieId: movieId,isReserved: seats[20]==0 ? false : true),
+                      CienmaSeat(id :21,movieId: movieId,isReserved: seats[21]==0 ? false : true),
+                      CienmaSeat(id :22,movieId: movieId,isReserved: seats[22]==0 ? false : true ),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(
-                        isReserved: true,
-                      ),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :23,movieId: movieId,isReserved: seats[23]==0 ? false : true),
+                      CienmaSeat(id :24,movieId: movieId,isReserved: seats[24]==0 ? false : true),
+                      CienmaSeat(id :25,movieId: movieId,isReserved: seats[25]==0 ? false : true),
                     ],
                   ),
                   // 5TH Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :26,movieId: movieId,isReserved: seats[26]==0 ? false : true),
+                      CienmaSeat(id :27,movieId: movieId,isReserved: seats[27]==0 ? false : true),
+                      CienmaSeat(id :28,movieId: movieId,isReserved: seats[28]==0 ? false : true),
+                      CienmaSeat(id :29,movieId: movieId,isReserved: seats[29]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :30,movieId: movieId,isReserved: seats[30]==0 ? false : true),
+                      CienmaSeat(id :31,movieId: movieId,isReserved: seats[31]==0 ? false : true),
+                      CienmaSeat(id :32,movieId: movieId,isReserved: seats[32]==0 ? false : true),
                     ],
                   ),
                   // 6TH Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :33,movieId: movieId,isReserved: seats[33]==0 ? false : true),
+                      CienmaSeat(id :34,movieId: movieId,isReserved: seats[34]==0 ? false : true),
+                      CienmaSeat(id :35,movieId: movieId,isReserved: seats[35]==0 ? false : true),
+                      CienmaSeat(id :36,movieId: movieId,isReserved: seats[36]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :37,movieId: movieId,isReserved: seats[37]==0 ? false : true),
+                      CienmaSeat(id :38,movieId: movieId,isReserved: seats[38]==0 ? false : true),
+                      CienmaSeat(id :39,movieId: movieId,isReserved: seats[39]==0 ? false : true),
                     ],
                   ),
                   // final Row
@@ -288,14 +283,17 @@ class BuyTicket extends StatelessWidget {
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :40,movieId: movieId,isReserved: seats[40]==0 ? false : true),
+                      CienmaSeat(id :41,movieId: movieId,isReserved: seats[41]==0 ? false : true),
+                      CienmaSeat(id :42,movieId: movieId,isReserved: seats[42]==0 ? false : true),
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(),
-                      CienmaSeat(),
+                      CienmaSeat(id :43,movieId: movieId,isReserved: seats[43]==0 ? false : true),
+                      CienmaSeat(id :44,movieId: movieId,isReserved: seats[44]==0 ? false : true),
+                      CienmaSeat(id :45,movieId: movieId,isReserved: seats[45]==0 ? false : true),
+                      CienmaSeat(id :46,movieId: movieId,isReserved: seats[46]==0 ? false : true),
+
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20),
                       ),

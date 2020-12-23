@@ -2,19 +2,29 @@
 import 'package:flutter/material.dart';
 
 import '../const.dart';
+import 'package:movie_ticket_app/model.dart';
+
+import '../model.dart';
+
 
 class CienmaSeat extends StatefulWidget {
+  int movieId ;
+  int id;
   bool isReserved;
+  bool firstPress = true;
+  bookSeat(int idd,int movieIdd){
+    movies[movieIdd].seats[idd] = 1 ;
+  }
 
-  bool isSelected;
-
-  CienmaSeat({this.isSelected = false, this.isReserved = false});
+  CienmaSeat({@required this.id , @required this.isReserved,@required this.movieId });
 
   @override
   _CienmaSeatState createState() => _CienmaSeatState();
 }
 
 class _CienmaSeatState extends State<CienmaSeat> {
+
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -22,18 +32,23 @@ class _CienmaSeatState extends State<CienmaSeat> {
       highlightColor: Colors.transparent,
       onTap: () {
         setState(() {
-          !widget.isReserved ? widget.isSelected = !widget.isSelected : null;
-        });
+          if (! widget.isReserved){
+            widget.firstPress = false;
+          widget.isReserved = true;
+          widget.bookSeat(widget.id, widget.movieId);
+          print(movies[widget.movieId].title);
+          print(movies[widget.movieId].seats);
+        }});
       },
       child: Container(
           margin: EdgeInsets.symmetric(horizontal: 7.0, vertical: 5.0),
           width: MediaQuery.of(context).size.width / 15,
           height: MediaQuery.of(context).size.width / 15,
           decoration: BoxDecoration(
-              color: widget.isSelected
+              color: widget.isReserved
                   ? kPimaryColor
-                  : widget.isReserved ? Colors.white : null,
-              border: !widget.isSelected && !widget.isReserved
+                  :  null,
+              border: !widget.isReserved
                   ? Border.all(color: Colors.white, width: 1.0)
                   : null,
               borderRadius: BorderRadius.circular(5.0))),

@@ -9,7 +9,7 @@ import 'components/movie_app_bar.dart';
 import 'components/primary_rounder_button.dart';
 import 'model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 class MyHomePage extends StatefulWidget {
 
   int index = 1;
@@ -114,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              BuyTicket(movies[widget.index].title),
+                              BuyTicket(movies[widget.index].title,movies[widget.index].id,movies[widget.index].seats),
                         ),
                       );
                     }),
