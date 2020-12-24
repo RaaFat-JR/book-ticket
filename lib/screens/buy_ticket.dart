@@ -307,20 +307,14 @@ class BuyTicket extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(left: 25.0),
-                    child: Text(
-                      '30\$',
-                      style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                  Container(
+                    padding: const EdgeInsets.only(left: 235.0),
+
+
+                  child: Container(
           padding: EdgeInsets.symmetric(horizontal:40.0 , vertical:10.0),
           decoration: BoxDecoration(color:  kActionColor , borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0))),
-          child: InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
-        )
+          child: InkWell(child: Text('BOOK' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
+        ),),
                 ],
               ),
             )

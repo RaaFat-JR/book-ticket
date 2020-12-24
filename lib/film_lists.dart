@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 Image.asset('assets/images/divider.png'),
                 RedRoundedActionButton(
-                    text: 'BUY TICKET',
+                    text: 'BOOK SEAT',
                     callback: () {
                       Navigator.push(
                         context,
