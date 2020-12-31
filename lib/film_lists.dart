@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/components/red_rounded_action_button.dart';
@@ -9,71 +10,76 @@ import 'components/movie_app_bar.dart';
 import 'components/primary_rounder_button.dart';
 import 'model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'model.dart';
 
 class MyHomePage extends StatefulWidget {
-
   int index = 1;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final auth= FirebaseAuth.instance;
+  final auth = FirebaseAuth.instance;
+  final _fStore = FirebaseFirestore.instance;
+  String result;
 
   // ignore: deprecated_member_use
   FirebaseUser loggedInUser;
   @override
-  void initSate(){
-
+  void initSate() {
     super.initState();
     getCurrentUser();
   }
 
-  void getCurrentUser()async{
-   try{ final user =   FirebaseAuth.instance.currentUser;
-    if(user != null) {
-      loggedInUser = user;
-      print(loggedInUser.email);
+
+
+  void getCurrentUser() async {
+    try {
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
     }
-    }
-    catch(e){print(e);}
   }
+
   @override
   Widget build(BuildContext context) {
-    final String backgroundImage = movies[widget.index].imageURL;
     final String age = movies[widget.index].age;
     final String rating = movies[widget.index].rating.toString();
-    final String year = movies[widget.index].date.year.toString();
-    final String categories = movies[widget.index].categorires;
+
+    final String categories = movies[widget.index].categories;
     final String technology = movies[widget.index].technology;
+
+    Future<List<Movie>> getData() async {
+      final QuerySnapshot item = await _fStore.collection('movies').get();
+      List<Movie> movies = [];
+      item.docs.forEach((element) {
+        movies.add(
+            Movie(
+              title: element.data()['title'],
+              imageURL: element.data()['image'],
+              categories: element.data()['description'],
+              date: element.data()['time'],
+            ));
+      });
+      return movies;
+    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      backgroundColor: kBackgroundColor,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-
-          BackgroundGradientImage(
-            image: Image.network(
-              backgroundImage,
-              fit: BoxFit.cover,
-            ),
-          ),
           SafeArea(
             child: Column(
               children: [
                 Padding(padding: EdgeInsets.all(10.0)),
                 MovieAppBar(),
                 Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
-                Text(
-                  'NEW.MOVIE',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Image.asset(movies[widget.index].logo),
                 Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -84,21 +90,19 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     DarkBorderlessButton(text: age, callback: () {}),
                     PrimaryRoundedButton(
-                      text: rating,
-                      callback: () {},
-                    ),
+                        text: rating,
+                        callback: ()  async {
+                          final items = await _fStore.collection('movies').doc('ZXAQ8WxN59MfiOdgP4l5').get();
+                          print(items.data()['title']);
+                        })
                   ],
                 ),
                 Padding(
                   padding:
-                  EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
-                      Text(
-                        year,
-                        style: kSmallMainTextStyle,
-                      ),
                       Text('•', style: kPromaryColorTextStyle),
                       Text(categories, style: kSmallMainTextStyle),
                       Text('•', style: kPromaryColorTextStyle),
@@ -113,27 +117,41 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              BuyTicket(movies[widget.index].title,movies[widget.index].id,movies[widget.index].seats),
+                          builder: (context) => BuyTicket(
+                              movies[widget.index].title,
+                              movies[widget.index].id,
+                              movies[widget.index].seats),
                         ),
                       );
                     }),
                 Expanded(
-                    child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: movies.length,
-                        itemBuilder: (context, index) {
-                          return MovieCard(
-                              title: movies[index].title,
-                              imageLink: movies[index].imageURL,
-                              active: index == widget.index ? true : false,
-                              callBack: () {
-                                setState(() {
-                                  widget.index = index;
-                                });
-                              });
-                        })),
+                  child: FutureBuilder(
+                    future: getData(), // function where you call your api
+                    builder: (BuildContext context, snapshot) {
+                      // AsyncSnapshot<Your object type>
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                            child: Text('Please wait its loading...'));
+                      } else {
+                        return ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            shrinkWrap: true,
+                            itemCount: 2,
+                            itemBuilder: (context, index) {
+                              return MovieCard(
+                                  title: snapshot.data[index].title,
+                                  imageLink: snapshot.data[index].imageURL,
+                                  active: index == widget.index ? true : false,
+                                  callBack: () {
+                                    setState(() {
+                                      widget.index = index;
+                                    });
+                                  });
+                            }); // snapshot.data  :- get your object which is pass from your downloadData() function
+                      }
+                    },
+                  ),
+                ),
               ],
             ),
           ),
@@ -154,9 +172,9 @@ class MovieCard extends StatelessWidget {
 
   MovieCard(
       {@required this.title,
-        @required this.imageLink,
-        @required this.callBack,
-        @required this.active});
+      @required this.imageLink,
+      @required this.callBack,
+      @required this.active});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -183,8 +201,9 @@ class MovieCard extends StatelessWidget {
               fontWeight: FontWeight.bold,
               color: Colors.white,
             )),
-
       ],
     );
   }
 }
+
+

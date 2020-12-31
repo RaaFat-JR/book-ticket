@@ -5,7 +5,7 @@ class Movie {
   int id ;
   String age;
 
-  String categorires;
+  String categories;
 
   String imageURL;
 
@@ -20,15 +20,15 @@ class Movie {
 
 
   Movie(
-      {@required this.title,
-      @required this.imageURL,
-      @required this.logo,
-      @required this.age,
-      @required this.rating,
-      @required this.date,
-      @required this.categorires,
-      @required this.technology,
-      @required this.id});
+      { this.title,
+       this.imageURL,
+       this.logo,
+       this.age,
+       this.rating,
+       this.date,
+       this.categories,
+       this.technology,
+       this.id});
 }
 
 final List<Movie> movies = [
@@ -41,7 +41,7 @@ final List<Movie> movies = [
       age: 'R',
       rating: 8,
       date: DateTime(2019),
-      categorires: 'Crime, Drama, Thriller',
+      categories: 'Crime, Drama, Thriller',
       technology: 'DataSat, Dolby Digital '),
   Movie(
     id: 1,
@@ -52,7 +52,7 @@ final List<Movie> movies = [
       age: '18+',
       rating: 8.7,
       date: DateTime(2019),
-      categorires: 'Crime, Drama, Thriller',
+      categories: 'Crime, Drama, Thriller',
       technology: 'DataSat, Dolby Digital '),
   Movie(
       id: 2,
@@ -63,7 +63,7 @@ final List<Movie> movies = [
       age: 'PG-13',
       rating: 8.5,
       date: DateTime(2019),
-      categorires: ' Action, Adventure, Drama',
+      categories: ' Action, Adventure, Drama',
       technology: 'DataSat, Dolby Digital '),
   Movie(
       id: 3 ,
@@ -74,6 +74,6 @@ final List<Movie> movies = [
       age: 'R',
       rating: 7.7,
       date: DateTime(2019),
-      categorires: 'Drama, Comedy-drama',
+      categories: 'Drama, Comedy-drama',
       technology: 'DataSat, Dolby Digital '),
 ];

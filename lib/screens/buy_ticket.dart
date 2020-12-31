@@ -53,49 +53,6 @@ class BuyTicket extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 10.0),
-              width: MediaQuery.of(context).size.width * .9,
-              decoration: BoxDecoration(
-                color: Colors.black,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(25.0),
-                  topLeft: Radius.circular(25.0),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    vertical: 10.0, horizontal: 10.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget>[
-                      CalendarDay(
-                        dayNumber: '9',
-                        dayAbbreviation: 'TH',
-                      ),
-                      CalendarDay(
-                        dayNumber: '10',
-                        dayAbbreviation: 'FR',
-                      ),
-                      CalendarDay(
-                        dayNumber: '11',
-                        dayAbbreviation: 'SA',
-                      ),
-                      CalendarDay(
-                        dayNumber: '12',
-                        dayAbbreviation: 'SU',
-                        isActive: true,
-                      ),
-                      CalendarDay(
-                        dayNumber: '13',
-                        dayAbbreviation: 'MO',
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -133,39 +90,6 @@ class BuyTicket extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Icon(
-                    Icons.tv,
-                    color: kPimaryColor,
-                    size: 25.0,
-                  ),
-                  SizedBox(width: 20.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Star Cineplex Bangladesh', style: kMainTextStyle),
-                      Text('panthapath , 1205 Dhaka',
-                          style:
-                              TextStyle(color: Colors.white30, fontSize: 18.0)),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: <Widget>[
-                          Text('2D', style: kMainTextStyle),
-                          SizedBox(width: 10.0),
-                          Text('3D',
-                              style: TextStyle(
-                                  color: Colors.white30,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold)),
-                        ],
-                      )
-                    ],
-                  ),
-                  SizedBox(width: 20.0),
-                  Icon(
-                    Icons.keyboard_arrow_right,
-                    size: 30.0,
-                    color: Colors.white38,
-                  )
                 ],
               ),
             ),
