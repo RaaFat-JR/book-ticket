@@ -44,6 +44,72 @@ final List<Movie> movies = [
       categories: 'Crime, Drama, Thriller',
       technology: 'DataSat, Dolby Digital '),
   Movie(
+      id: 0,
+      title: 'The Irishman',
+      imageURL:
+      'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      logo: 'assets/images/logos/irishman.png',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categories: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
+      id: 0,
+      title: 'The Irishman',
+      imageURL:
+      'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      logo: 'assets/images/logos/irishman.png',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categories: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
+      id: 0,
+      title: 'The Irishman',
+      imageURL:
+      'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      logo: 'assets/images/logos/irishman.png',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categories: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
+      id: 0,
+      title: 'The Irishman',
+      imageURL:
+      'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      logo: 'assets/images/logos/irishman.png',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categories: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
+      id: 0,
+      title: 'The Irishman',
+      imageURL:
+      'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      logo: 'assets/images/logos/irishman.png',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categories: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
+      id: 0,
+      title: 'The Irishman',
+      imageURL:
+      'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      logo: 'assets/images/logos/irishman.png',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categories: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
     id: 1,
       title: 'JOKER',
       imageURL:

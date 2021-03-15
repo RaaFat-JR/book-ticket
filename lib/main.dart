@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/components/red_rounded_action_button.dart';
 import 'package:movie_ticket_app/const.dart';
 import 'package:movie_ticket_app/screens/buy_ticket.dart';
-import 'components/background_gradient_image.dart';
 import 'components/dark_borderless_button.dart';
 import 'components/movie_app_bar.dart';
 import 'components/primary_rounder_button.dart';

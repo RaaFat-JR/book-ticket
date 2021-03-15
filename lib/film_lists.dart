@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/components/red_rounded_action_button.dart';
 import 'package:movie_ticket_app/const.dart';
 import 'package:movie_ticket_app/screens/buy_ticket.dart';
-import 'components/background_gradient_image.dart';
 import 'components/dark_borderless_button.dart';
 import 'components/movie_app_bar.dart';
 import 'components/primary_rounder_button.dart';
@@ -30,7 +29,6 @@ class _MyHomePageState extends State<MyHomePage> {
     super.initState();
     getCurrentUser();
   }
-
 
 
   void getCurrentUser() async {
@@ -80,23 +78,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 Padding(padding: EdgeInsets.all(10.0)),
                 MovieAppBar(),
                 Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
-                Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    DarkBorderlessButton(
-                      text: 'Popular with Friends',
-                      callback: () {},
-                    ),
-                    DarkBorderlessButton(text: age, callback: () {}),
-                    PrimaryRoundedButton(
-                        text: rating,
-                        callback: ()  async {
-                          final items = await _fStore.collection('movies').doc('ZXAQ8WxN59MfiOdgP4l5').get();
-                          print(items.data()['title']);
-                        })
-                  ],
-                ),
                 Padding(
                   padding:
                       EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
@@ -111,19 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Image.asset('assets/images/divider.png'),
-                RedRoundedActionButton(
-                    text: 'BOOK SEAT',
-                    callback: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BuyTicket(
-                              movies[widget.index].title,
-                              movies[widget.index].id,
-                              movies[widget.index].seats),
-                        ),
-                      );
-                    }),
+
                 Expanded(
                   child: FutureBuilder(
                     future: getData(), // function where you call your api
@@ -136,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         return ListView.builder(
                             scrollDirection: Axis.horizontal,
                             shrinkWrap: true,
-                            itemCount: 2,
+                            itemCount: snapshot.data.length,
                             itemBuilder: (context, index) {
                               return MovieCard(
                                   title: snapshot.data[index].title,
@@ -152,6 +121,20 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                   ),
                 ),
+                Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
+                RedRoundedActionButton(
+                    text: 'BOOK SEAT',
+                    callback: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => BuyTicket(
+                              movies[widget.index].title,
+                              movies[widget.index].id,
+                              movies[widget.index].seats),
+                        ),
+                      );
+                    }),
               ],
             ),
           ),
@@ -190,7 +173,12 @@ class MovieCard extends StatelessWidget {
                   : MediaQuery.of(context).size.width / 4,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25.0),
-                child: Image.network(imageLink),
+                child: Image.network(
+                    imageLink,
+                width: 80,
+                height: 220,
+                fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
